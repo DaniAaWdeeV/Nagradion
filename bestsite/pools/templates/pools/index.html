@@ -1,0 +1,23 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'pools/style.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls 5 newest</title>
+</head>
+<body>
+{% if latest_qs %}
+    <ul>
+    <h2>5 latest polls:</h2>
+    {% for q in latest_qs %}
+        <li><a href="{% url 'pools:details' q.id %}">{{ q.question_text }} </a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls available.</p>
+{% endif %}
+</body>
+</html>
